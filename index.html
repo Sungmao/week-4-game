@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Star War</title>
+	</head>
+	<style>
+		.letter { width: 100px; height:50px; border-style: solid; padding: 2px; float: left; margin: 2px; }
+
+		.letter-button-color { color: darkcyan; }
+
+		.active-color { color: red; }
+
+		.charImg {width: 130px; height: 130px;}
+
+
+		#yourDefender { padding-top:60px; }
+
+		#yourCharacter { padding-top:60px; width: 600px;}
+
+
+
+
+
+
+	</style>
+
+
+
+
+<body>
+
+<div id="charChoice"> 
+
+	<h2>Star War RPG</h2>
+
+
+</div>
+
+<div id="charChoice0"></div>
+<div id="charChoice1"></div>
+<div id="charChoice2"></div>
+<div id="charChoice3"></div>
+
+
+<div id="yourCharacter">
+	
+	<h2>Your Character</h2>
+
+</div>
+<div id="enemies">
+	
+	<h2>Your Enemies</h2>
+
+</div>
+<div id="yourDefender">
+	
+	<h2>Flight Section <br> Defender</h2>
+
+</div>
+<button id="attack">Attack</button>
+<button id="restart">Restart</button>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+
+		var character = ["Obi-Wan Kenobi", "Luke Skywalker", "Darth Sidious", "Darth Maul"];
+		var images = ["0.jpg", "1.jpg", "2.jpg", "3.jpg"];
+
+		var counter = false;
+
+
+		for (var i = 0; i < character.length; i++){
+			var char = $('<div>');
+			char.addClass('letter letter-button-color');
+			char.addClass('charbutton'+i);
+			//char.attr('data-let', character[i]);
+			char.text(character[i]);
+			$("#charChoice"+[i]).append(char);
+			//$("#charChoice").append(char);
+			var charImg = $('<img>');
+			charImg.attr('src', 'assets/images/' + images[i]);
+			charImg.addClass('charImg');
+			//charImg.text(character[i]);
+			$("#charChoice"+[i]).append(charImg);
+			//$("#charChoice").append(charImg);
+
+
+		};
+
+
+		$('.charbutton0').on('click', function() {		
+
+			if (counter == false) {
+				$('#yourCharacter').append(charChoice0);
+				$('#enemies').append(charChoice1, charChoice2, charChoice3);
+			};
+
+			if (counter == true) {
+				$('#charChoice0').addClass('active-color');
+			};
+
+			counter = true;
+
+		});
+
+
+		$('.charbutton1').on('click', function() {
+
+
+			if (counter == false) {
+				
+				$('#yourCharacter').append(charChoice1);
+				$('#enemies').append(charChoice0, charChoice2, charChoice3);
+			};
+
+			counter = true;
+		
+		});
+
+		$('.charbutton2').on('click', function() {
+
+
+			if (counter == false) {
+				
+			$('#yourCharacter').append(charChoice2);
+			$('#enemies').append(charChoice0, charChoice1, charChoice3);
+
+			};
+
+			counter = true;
+
+
+
+		});
+
+		$('.charbutton3').on('click', function() {
+
+			if (counter == false) {
+				
+			$('#yourCharacter').append(charChoice3);
+			$('#enemies').append(charChoice0, charChoice1, charChoice2);
+
+			};
+			
+			counter = true;
+
+		});
+
+		console.log(counter);
+
+		$('#restart').on('click', function(){
+
+			$('#yourCharacter').empty();
+			$('#enemies').empty();
+			$('#yourDefender').empty();
+
+
+		})
+
+	});
+
+</script>
+
+</body>
+</html>
